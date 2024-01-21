@@ -1,0 +1,58 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_shop">
+
+    <fragment
+        android:id="@+id/navigation_shop"
+        android:name="hr.algebra.ecommerce.ui.fragments.ShopFragment"
+        android:label="@string/title_shop"
+        tools:layout="@layout/fragment_shop" />
+
+    <fragment
+        android:id="@+id/navigation_mylist"
+        android:name="hr.algebra.ecommerce.ui.fragments.MyListFragment"
+        android:label="@string/title_mylist"
+        tools:layout="@layout/fragment_my_list" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="hr.algebra.ecommerce.ui.fragments.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/action_profile_to_total_expended"
+            app:destination="@id/navigation_total_expended" />
+
+        <action
+            android:id="@+id/action_profile_to_acquisitions"
+            app:destination="@id/navigation_acquisitions" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_total_expended"
+        android:name="hr.algebra.ecommerce.ui.fragments.TotalExpendedFragment"
+        android:label="@string/title_total_expended"
+        tools:layout="@layout/fragment_total_expended">
+
+        <action
+            android:id="@+id/action_total_expended_to_profile"
+            app:destination="@id/navigation_profile" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_acquisitions"
+        android:name="hr.algebra.ecommerce.ui.fragments.AcquisitionsFragment"
+        android:label="@string/title_acquisitions"
+        tools:layout="@layout/fragment_acquistions">
+
+        <action
+            android:id="@+id/action_acquisitions_to_profile"
+            app:destination="@id/navigation_profile" />
+
+    </fragment>
+</navigation>

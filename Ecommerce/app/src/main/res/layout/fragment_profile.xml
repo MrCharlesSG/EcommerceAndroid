@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background_color"
+    tools:context=".ui.fragments.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_size"
+            android:layout_margin="15dp"
+            android:src="@drawable/user"
+            android:background="@drawable/circle_shape_border"
+            android:backgroundTint="@color/main_color"
+            app:tint="@color/main_background_color" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/llTotalExpended"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginVertical="@dimen/_10dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_expended"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_20sp"/>
+                    <ImageView
+                        android:src="@drawable/small_arrow"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:tint="@color/main_color" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llAcquisitions"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginVertical="@dimen/_10dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/acquisitions"
+                        android:layout_gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_20sp"/>
+                    <ImageView
+                        android:src="@drawable/small_arrow"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:tint="@color/main_color" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

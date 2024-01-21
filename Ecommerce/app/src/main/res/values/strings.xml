@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_splash_screen">e-commerce</string>
+    <string name="loading_text_splash_screen">loading...</string>
+    <string name="no_internet">No Internet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_mylist">My List</string>
+    <string name="title_profile">Profile</string>
+    <string name="add_to_chart">Add to Chart</string>
+    <string name="descriptionToolText">We Sanchhaya Education Pvt. Ltd., are registered and headquartered \n        at BC 227, 2nd Floor, Matrix Business Tower, B4, Sector 132, Noida, UP-201301, hereinafter  \n        referred to as GeeksforGeeks. We also offer paid Courses managed by Sanchhaya Classes Pvt. Ltd. \n        with registered office address B-142, Vishwash Park, Uttam Nagar, New Delhi, North Delhi, Delhi, India, 110059. \n        At GeeksforGeeks, we value your trust and  respect your privacy. This privacy statement (“Privacy Statement”) \n        applies to the treatment of personally identifiable information submitted by, or otherwise obtained from,  \n        you in connection with the associated application (“Application”). The Application is  \n        provided by GeeksforGeeks (and may be provided by Geeksforgeeks on behalf  \n        of a GeeksforGeeks licensor or partner (“Application Partner”).  \n        By using or otherwise accessing the Application, you acknowledge that you accept the practices \n        and policies outlined in this Privacy Statement.</string>
+    <string name="see_more">See More</string>
+    <string name="see_less">See Less</string>
+    <string name="cart_title">Cart</string>
+    <string name="quantity">Quantity:</string>
+    <string name="added_to_cart">Added to Cart</string>
+    <string name="total">Total Expended:</string>
+    <string name="acquisitions">Acquisitions</string>
+    <string name="total_expended">Total Expended</string>
+    <string name="title_total_expended">Total Expended</string>
+    <string name="title_acquisitions">Acquisitions</string>
+    <string name="defaultCategoryName">All</string>
+</resources>

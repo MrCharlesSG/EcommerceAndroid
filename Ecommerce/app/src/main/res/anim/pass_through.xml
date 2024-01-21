@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/anim/slide_animation.xml -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:fromXDelta="-100%"
+    android:toXDelta="200%"
+    android:duration="5000"
+    android:repeatCount="infinite"
+    android:interpolator="@android:anim/linear_interpolator"
+    android:fillAfter="false" />
+</set>
