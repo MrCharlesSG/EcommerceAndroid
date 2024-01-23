@@ -20,7 +20,7 @@ The application has three main sections and the cart and the Splash Screen. It s
 
 ### Splash Screen
 
-![WhatsApp Image 2024-01-21 at 13 24 14](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/2e1f459b-dede-44b6-b307-1f88f3068f62)
+![WhatsApp Image 2024-01-21 at 13 24 14](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/2e1f459b-dede-44b6-b307-1f88f3068f62 | width=100)
 
 ### Shop
 
