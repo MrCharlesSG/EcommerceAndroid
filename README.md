@@ -24,25 +24,24 @@ The application has three main sections and the cart and the Splash Screen. It s
 
 ### Shop
 
-![WhatsApp Image 2024-01-21 at 13 24 14 (1)](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/1ae9e2a5-9af5-40ca-b997-696d0229bbbf)
-![WhatsApp Image 2024-01-21 at 13 24 13 (1)](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/f9f2dd24-0740-422d-a61b-a485d4446019)
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/1ae9e2a5-9af5-40ca-b997-696d0229bbbf" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/f9f2dd24-0740-422d-a61b-a485d4446019" width="200" height="400" />
 
 ### MyList
 
-![WhatsApp Image 2024-01-21 at 13 24 12 (2)](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/756a2afa-5036-4a4a-8bd3-f55df21c2545)
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/756a2afa-5036-4a4a-8bd3-f55df21c2545" width="200" height="400" />
 
 
 ### Profile
-
-![WhatsApp Image 2024-01-21 at 13 24 12 (1)](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/7e93aa22-311e-456f-8b50-ddeea54abd0a)
-![WhatsApp Image 2024-01-21 at 13 24 12](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/79ceffe1-5399-4129-9f30-4a03ee1a9a25)
-![WhatsApp Image 2024-01-21 at 13 24 11](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/c0dbee2f-b88f-439c-9ca3-8042b8af8444)
-![WhatsApp Image 2024-01-21 at 13 24 14 (2)](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/18098150-6069-4190-a372-a5319e106880)
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/7e93aa22-311e-456f-8b50-ddeea54abd0a" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/79ceffe1-5399-4129-9f30-4a03ee1a9a25" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/c0dbee2f-b88f-439c-9ca3-8042b8af8444" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/18098150-6069-4190-a372-a5319e106880" width="200" height="400" />
 
 
 ### Cart
 
-![WhatsApp Image 2024-01-21 at 13 24 13](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/56af573c-eb70-4759-a30e-9890aa46564a)
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/56af573c-eb70-4759-a30e-9890aa46564a" width="200" height="400" />
 
 
 ## Classes Description
