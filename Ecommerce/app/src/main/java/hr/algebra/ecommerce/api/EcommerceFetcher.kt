@@ -3,7 +3,6 @@ package hr.algebra.ecommerce.api
 import android.content.Context
 import android.util.Log
 import hr.algebra.ecomerce2.framework.sendBroadcast
-import hr.algebra.ecommerce.App
 import hr.algebra.ecommerce.EcommerceReceiver
 import hr.algebra.ecommerce.dal.AppDatabase
 import hr.algebra.ecommerce.dal.category.CategoryEntity
@@ -92,14 +91,16 @@ class EcommerceFetcher (private val context: Context) {
 
 
     private fun populateProducts(products: List<ProductEcommerce>) {
-        val productDao = (context as App).getProductDao()
-        val categoriesDao = context.getCategoryDao()
+        val productDao = AppDatabase.getInstance(context)
+            .productDao()
+        val categoriesDao = AppDatabase.getInstance(context)
+            .categoryDao()
 
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
+            val existingProducts = productDao.getAllProducts()
             productDao.deleteAllProducts()
             categoriesDao.deleteAllCategories()
-            val existingProducts = productDao.getAllProducts()
 
             val downloadedImagePaths = mutableListOf<String>()
 

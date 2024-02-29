@@ -6,9 +6,10 @@ import hr.algebra.ecommerce.utils.UrlValidator
 
 class NavigationAS(private val context: Context) {
 
-
     fun canNavigate(id: Int): Boolean =
         !UrlValidator.INSTANCE.needsAuth(id) ||
             UrlValidator.INSTANCE.needsAuth(id) &&
             AuthManagerRepository.INSTANCE.getAuthManager().isUserLogged()
+
+
 }

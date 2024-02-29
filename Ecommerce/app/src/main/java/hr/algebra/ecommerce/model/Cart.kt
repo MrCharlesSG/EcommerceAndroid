@@ -8,7 +8,7 @@ data class Cart(
     private var total: Int,
     private val context: Context,
     private val cart: MutableList<CartElementEcommerce>
-) {
+) : CartData {
     fun addToCart(cartElementEcommerce: CartElementEcommerce) {
         var exists = false
         cart.forEach {
@@ -30,8 +30,8 @@ data class Cart(
         }
     }
 
-    fun getList(): MutableList<CartElementEcommerce> = cart
-    fun getTotalPrice(): Int = total
+    override fun getList(): MutableList<CartElementEcommerce> = cart
+    override fun getTotalPrice(): Int = total
     fun clear() {
         cart.clear()
         total = 0
@@ -46,7 +46,7 @@ data class Cart(
         }
     }
 
-    fun getProductListEntity(purchaseId: Long): List<ProductPurchasedEntity> {
+    override fun getProductListEntity(purchaseId: Long): List<ProductPurchasedEntity> {
         val list = mutableListOf<ProductPurchasedEntity>()
         cart.forEach { element ->
             val images = mutableListOf<String>()
@@ -71,10 +71,13 @@ data class Cart(
         return list
     }
 
-    private fun getCorrectUrl(purchaseId: Long, image: String): String {
-        val extension: String = image.substring(image.lastIndexOf('.'))
-        val urlWithoutExtension: String = image.substring(0, image.lastIndexOf('.'))
-        return urlWithoutExtension + purchaseId + extension
+    private fun getCorrectUrl(purchaseId: Long, image: String): String? {
+        if(image.isNotEmpty()) {
+            val extension: String = image.substring(image.lastIndexOf('.'))
+            val urlWithoutExtension: String = image.substring(0, image.lastIndexOf('.'))
+            return urlWithoutExtension + purchaseId + extension
+        }
+        return null
     }
 }
 

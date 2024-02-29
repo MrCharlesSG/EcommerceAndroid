@@ -9,14 +9,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import hr.algebra.ecommerce.App
 import hr.algebra.ecommerce.Observer
 import hr.algebra.ecommerce.adapter.ProductCartAdapter
-import hr.algebra.ecommerce.dal.purchase.PurchaseEntity
 import hr.algebra.ecommerce.databinding.CartSheetLayoutBinding
 import hr.algebra.ecommerce.model.CartElementEcommerce
 import hr.algebra.ecommerce.utils.getMoneyFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 
 class CartSheetFragment () : BottomSheetDialogFragment(), Observer {
     private var _binding: CartSheetLayoutBinding ?=null
@@ -37,8 +35,8 @@ class CartSheetFragment () : BottomSheetDialogFragment(), Observer {
     }
 
     private fun bind() {
-        cart = (context?.applicationContext as App).getCart().getList()
-        totalPrice = (context?.applicationContext as App).getCart().getTotalPrice()
+        cart = (context?.applicationContext as App).getCartAS().getCart().getList()
+        totalPrice = (context?.applicationContext as App).getCartAS().getCart().getTotalPrice()
         binding.progressBar.visibility = View.GONE
         binding.rvProducts.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -61,21 +59,12 @@ class CartSheetFragment () : BottomSheetDialogFragment(), Observer {
     }
 
     private fun buyCart() {
-        val cart = (context?.applicationContext as App).getCart()
-        val purchaseID = LocalDate.now().toEpochDay()
-        val purchaseEntity = PurchaseEntity(purchaseID, cart.getTotalPrice())
-        val productListEntity = cart.getProductListEntity(purchaseID)
-        val daoPurchase = (context?.applicationContext as App).getPurchasedDao()
-
         GlobalScope.launch (Dispatchers.IO) {
-            val purchaseEntityFromDB = daoPurchase.getPurchaseById(purchaseID)
-            if(purchaseEntityFromDB!=null){
-                purchaseEntity.price+= purchaseEntityFromDB.price
+            if((context?.applicationContext as App).getPurchaseAS().buy()) {
+                clearCart()
             }
-            daoPurchase.insertPurchase(purchaseEntity)
-            daoPurchase.insertProducts(productListEntity)
         }
-        clearCart()
+
     }
 
     private fun clearCart() {

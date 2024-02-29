@@ -37,12 +37,9 @@ class TotalExpendedFragment : Fragment() {
         GlobalScope.launch (Dispatchers.Main) {
             //MAIN THREAD
             purchases = withContext( Dispatchers.IO){
-                val purchaseDao = (context?.applicationContext as App).getPurchasedDao()
-                val purchasesEntity = purchaseDao.getAllPurchases()
-                purchasesEntity.map { purchaseEntity ->
-                    totalExpended += purchaseEntity.price
-                    Purchase.getFromEntity(purchaseEntity)
-                }
+                val pair = (context?.applicationContext as App).getPurchaseAS().getAllPurchasesAndTotal()
+                totalExpended= pair.first
+                pair.second
             }
             setupChart()
             setupTotalPrice()

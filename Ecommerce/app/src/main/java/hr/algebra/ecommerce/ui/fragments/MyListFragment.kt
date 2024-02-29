@@ -79,15 +79,7 @@ class MyListFragment : Fragment(), Observer {
 
     private suspend fun loadCategories() {
         val categories: List<CategoryEcommerce> = withContext(Dispatchers.IO) {
-            val daoCategory = (context?.applicationContext as App).getCategoryDao()
-            val categoriesMutable = mutableListOf<CategoryEcommerce>()
-            categoriesMutable.add(CategoryEcommerce.defaultCategory)
-            val categoryEntities = daoCategory.getAllCategories()
-            categoryEntities.forEach {
-                categoriesMutable.add(CategoryEcommerce.getFromEntity(it))
-            }
-
-            categoriesMutable
+            (context?.applicationContext as App).getCategoryAS().getCategories()
         }
         this.categories = categories
         bindCategories()
@@ -96,21 +88,7 @@ class MyListFragment : Fragment(), Observer {
     private suspend fun loadProducts() {
         val products: List<ProductEcommerce> = withContext(Dispatchers.IO) {
             //Background thread
-            val myListDao = (context?.applicationContext as App).getMyListDao()
-            val productEntities = (context?.applicationContext as App).getProductDao().getAllProducts()
-            val productEcommerceList = mutableListOf<ProductEcommerce>()
-
-            productEntities.forEach { productEntity ->
-                val myListProduct = myListDao.get(productEntity._id)
-                if(myListProduct!=null){
-                    val productEcommerce = ProductEcommerce.getFromEntity(productEntity)
-                    productEcommerce.setInMyList(
-                        inMyList = true
-                    )
-                    productEcommerceList.add(productEcommerce)
-                }
-            }
-            productEcommerceList
+            (context?.applicationContext as App).getMyListAS().getMyList()
         }
         this.products = products
         bindProducts()
@@ -118,6 +96,7 @@ class MyListFragment : Fragment(), Observer {
     }
 
     override fun updateView() {
+        binding.pbProgress.visibility = View.VISIBLE
         GlobalScope.launch(Dispatchers.Main) {
             loadProducts()
             bindProducts()

@@ -30,12 +30,7 @@ class AcquisitionsFragment : Fragment() {
         GlobalScope.launch (Dispatchers.Main) {
             //MAIN THREAD
             val purchases : List<Purchase> = withContext( Dispatchers.IO){
-                val purchaseDao = (context?.applicationContext as App).getPurchasedDao()
-                val purchasesEntity = purchaseDao.getAllPurchases()
-                purchasesEntity.map { purchaseEntity ->
-                    val productsEntities = purchaseDao.getAllProductOfPurchase(purchaseEntity._id)
-                    Purchase.getFromEntity(purchaseEntity, productsEntities)
-                }
+                (context?.applicationContext as App).getPurchaseAS().getAllPurchases()
             }
 
             //MAin Thread

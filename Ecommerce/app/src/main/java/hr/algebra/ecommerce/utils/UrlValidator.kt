@@ -10,7 +10,8 @@ enum class UrlValidator {
     INSTANCE;
 
     private val elementsWithCart = listOf<Int>(
-        R.id.navigation_shop
+        R.id.navigation_shop,
+        R.id.navigation_mylist
     )
 
     private val elementsWithNoBack = listOf<Int>(

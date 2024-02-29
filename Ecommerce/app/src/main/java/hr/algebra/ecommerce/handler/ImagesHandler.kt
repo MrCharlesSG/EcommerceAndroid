@@ -44,25 +44,26 @@ fun deleteImage(imagePath: String) {
     }
 }
 
-fun changeImageName(context: Context, url: String, newUrl: String): String? {
+fun changeImageName(context: Context, url: String, newUrl: String?): String? {
     try {
-        val originalFile = File(url)
-        if (!originalFile.exists()) {
-            Log.e("IMAGES_HANDLER", "Does not exists $url")
-            return null
-        }
-
-        val filename = newUrl.substring(newUrl.lastIndexOf(File.separatorChar) + 1)
-        val newFile = createFile(context, filename)
-
-        originalFile.inputStream().use { inputStream ->
-            newFile.outputStream().use { outputStream ->
-                inputStream.copyTo(outputStream)
+        if(newUrl!=null) {
+            val originalFile = File(url)
+            if (!originalFile.exists()) {
+                Log.e("IMAGES_HANDLER", "Does not exists $url")
+                return null
             }
+
+            val filename = newUrl.substring(newUrl.lastIndexOf(File.separatorChar) + 1)
+            val newFile = createFile(context, filename)
+
+            originalFile.inputStream().use { inputStream ->
+                newFile.outputStream().use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+
+            return newFile.absolutePath
         }
-
-        return newFile.absolutePath
-
     } catch (e: Exception) {
         Log.e("IMAGES_HANDLER", e.toString(), e)
     }

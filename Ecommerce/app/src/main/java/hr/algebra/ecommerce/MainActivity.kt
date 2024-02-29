@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         )
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        (application as App).setActivity(this)
+        (application as ActivityHost).setActivity(this)
         initNavigation()
         setupListeners()
     }

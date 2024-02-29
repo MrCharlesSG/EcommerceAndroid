@@ -78,15 +78,7 @@ class ShopFragment : Fragment(), Observer {
 
     private suspend fun loadCategories() {
         val categories : List<CategoryEcommerce> = withContext( Dispatchers.IO){
-            val daoCategory = (context?.applicationContext as App).getCategoryDao()
-            val categoriesMutable = mutableListOf<CategoryEcommerce>()
-            categoriesMutable.add(CategoryEcommerce.defaultCategory)
-            val categoryEntities = daoCategory.getAllCategories()
-            categoryEntities.forEach{
-                categoriesMutable.add(CategoryEcommerce.getFromEntity(it))
-            }
-
-            categoriesMutable
+            (context?.applicationContext as App).getCategoryAS().getCategories()
         }
         this.categories = categories
         bindCategories()
@@ -94,20 +86,7 @@ class ShopFragment : Fragment(), Observer {
 
     private suspend fun loadProducts() {
         val products: List<ProductEcommerce> = withContext(Dispatchers.IO) {
-            //Background thread
-            val myListDao = (context?.applicationContext as App).getMyListDao()
-            val productEntities =
-                (context?.applicationContext as App).getProductDao().getAllProducts()
-            val productEcommerceList = mutableListOf<ProductEcommerce>()
-            productEntities.forEach { productEntity ->
-                val productEcommerce = ProductEcommerce.getFromEntity(productEntity)
-                val myList = myListDao.get(productEcommerce.id)
-                productEcommerce.setInMyList(
-                    myList != null
-                )
-                productEcommerceList.add(productEcommerce)
-            }
-            productEcommerceList
+            (context?.applicationContext as App).getProductAS().getAllProducts()
         }
         this.products = products
         bindProducts()
