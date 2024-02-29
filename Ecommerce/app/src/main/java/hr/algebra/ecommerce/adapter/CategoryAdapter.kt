@@ -18,6 +18,7 @@ class CategoryAdapter (
     private val observer: Observer
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>(){
 
+    private var positionSelected = 0
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
@@ -26,10 +27,10 @@ class CategoryAdapter (
         fun bind(category: CategoryEcommerce){
             tvTitle.text=category.name
             if(!category.isSelected()){
-                llCategoryCard.setBackgroundResource(R.drawable.circle_shape_border_main_color)
+                llCategoryCard.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.white)
                 tvTitle.setTextColor(ContextCompat.getColor(itemView.context, R.color.main_color))
             } else {
-                llCategoryCard.setBackgroundResource(R.drawable.circle_shape_border_and_background)
+                llCategoryCard.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.main_color)
                 tvTitle.setTextColor(ContextCompat.getColor(itemView.context, R.color.white))
             }
         }
@@ -54,7 +55,9 @@ class CategoryAdapter (
     private fun selectCategory(position: Int) {
         CategoryEcommerce.categorySelected = categories[position]
         observer.updateView()
-        notifyDataSetChanged()
+        notifyItemChanged(position)
+        notifyItemChanged(positionSelected)
+        positionSelected = position
     }
 
 }

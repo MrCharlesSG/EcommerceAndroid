@@ -8,6 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import hr.algebra.ecommerce.databinding.ActivityMainBinding
 import hr.algebra.ecommerce.ui.sheets.CartSheetFragment
+import hr.algebra.ecommerce.utils.UrlValidator
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         )
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        (application as App).setActivity(this)
         initNavigation()
         setupListeners()
     }
@@ -37,18 +39,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun initNavigation() {
         val navController = this.findNavController(R.id.nav_host_fragment_activity_main)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_shop) {
-                binding.ibCart.visibility = View.VISIBLE
-            } else {
-                binding.ibCart.visibility = View.GONE
-            }
-            if(destination.id != R.id.navigation_shop
-                && destination.id != R.id.navigation_mylist
-                && destination.id != R.id.navigation_profile){
-                binding.ibBack.visibility = View.VISIBLE
-            }else{
-                binding.ibBack.visibility = View.GONE
+            if (!(application as App).getNavigationAS().canNavigate(destination.id)) {
+                (application as App).showNotAuthenticatedDialog()
+                navController.popBackStack()
+                binding.navView.selectedItemId = navController.currentDestination!!.id
+            }else {
+                if (UrlValidator.INSTANCE.needsCart(destination.id)) {
+                    binding.ibCart.visibility = View.VISIBLE
+                } else {
+                    binding.ibCart.visibility = View.GONE
+                }
+                if (UrlValidator.INSTANCE.needsBack(destination.id)) {
+                    binding.ibBack.visibility = View.VISIBLE
+                } else {
+                    binding.ibBack.visibility = View.GONE
+                }
             }
         }
         binding.ibBack.setOnClickListener {

@@ -2,6 +2,6 @@
     android:shape="rectangle">
     <corners android:radius="@dimen/circle_shape_radius" /> <!-- Ajusta el radio según sea necesario -->
     <stroke
-        android:width="3dp"
+        android:width="0dp"
         android:color="@android:color/black" /> <!-- Ajusta el ancho y el color del borde según sea necesario -->
 </shape>

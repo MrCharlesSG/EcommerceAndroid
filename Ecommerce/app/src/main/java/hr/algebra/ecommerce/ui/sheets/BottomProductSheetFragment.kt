@@ -144,7 +144,7 @@ class BottomProductSheetFragment(
                 )
             }
         }
-        (context?.applicationContext as App).updateCartMyList(product)
+        (context?.applicationContext as App).getCartAS().updateCartMyList(product)
     }
 
     private fun setupViewMyList(inMyList: Boolean) {
@@ -162,7 +162,7 @@ class BottomProductSheetFragment(
 
     private fun removeFromCart() {
         val quantity = binding.etQuantity.text.toString().toInt()
-        (context?.applicationContext as App).removeFromCart(
+        (context?.applicationContext as App).getCartAS().removeFromCart(
             CartEntity(
                 product.id,
                 quantity
@@ -175,7 +175,7 @@ class BottomProductSheetFragment(
 
     private fun addToCart() {
         val quantity = binding.etQuantity.text.toString().toInt()
-        (context?.applicationContext as App).addToCart(
+        (context?.applicationContext as App).getCartAS().addToCart(
             CartEntity(
                 product.id,
                 quantity

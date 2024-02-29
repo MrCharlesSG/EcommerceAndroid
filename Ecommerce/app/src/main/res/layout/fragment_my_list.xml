@@ -31,8 +31,6 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:indeterminateTint="@color/main_color"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        style="?android:attr/progressBarStyleLarge" />
 
 </FrameLayout>

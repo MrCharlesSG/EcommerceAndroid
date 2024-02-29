@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "387817822912",
+    "project_id": "ecommerce-algebra",
+    "storage_bucket": "ecommerce-algebra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387817822912:android:a10e855c68dd111f6a2b25",
+        "android_client_info": {
+          "package_name": "hr.algebra.ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdnkHXOF-PWhdWuhQqYFlk4LNB3EJaXJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

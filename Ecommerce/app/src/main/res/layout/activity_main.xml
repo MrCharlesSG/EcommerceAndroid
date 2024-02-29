@@ -20,7 +20,7 @@
                 android:id="@+id/ibBack"
                 android:layout_width="@dimen/cart_size"
                 android:layout_height="@dimen/cart_size"
-                app:tint="@color/main_color"
+                app:tint="@color/black"
                 android:background="@android:color/transparent"
                 android:src="@drawable/arrow_back"
                 android:layout_alignParentStart="true"
@@ -33,7 +33,7 @@
                 android:layout_width="@dimen/cart_size"
                 android:layout_height="@dimen/cart_size"
                 android:layout_marginRight="20dp"
-                app:tint="@color/main_color"
+                app:tint="@color/black"
                 android:background="@android:color/transparent"
                 android:src="@drawable/shopping_cart_24"
                 android:layout_alignParentEnd="true"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/title_splash_screen"
-                android:textColor="@color/main_color"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold" />
         </RelativeLayout>

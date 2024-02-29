@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/main_background_color"
+    android:padding="@dimen/_10dp"
+    tools:context=".LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="end"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cross_24"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/_10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textSize="@dimen/_20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10dp"
+            android:background="@drawable/circle_shape"
+            android:backgroundTint="@color/slate200"
+            android:layout_marginVertical="@dimen/_10dp"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/_20sp"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="@color/main_background_color"
+                android:paddingVertical="@dimen/_5dp"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:textColor="@color/black"
+                android:layout_marginVertical="@dimen/_5dp"
+                android:hint="@string/email"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etPasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle_shape"
+                    android:backgroundTint="@color/main_background_color"
+                    android:paddingHorizontal="@dimen/_10dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/pbProgress"
+                android:visibility="gone"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/main_color"
+                style="?android:attr/progressBarStyleLarge" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_marginVertical="@dimen/_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="@color/main_color" />
+
+            <TextView
+                android:id="@+id/tvRegisterNow"
+                android:padding="@dimen/_5dp"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_shape"
+                android:backgroundTint="@color/main_background_color"
+                android:layout_height="wrap_content"
+                android:text="@string/click_to_register"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

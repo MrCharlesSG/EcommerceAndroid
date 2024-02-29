@@ -79,7 +79,7 @@ class CartSheetFragment () : BottomSheetDialogFragment(), Observer {
     }
 
     private fun clearCart() {
-        (context?.applicationContext as App).clearCart()
+        (context?.applicationContext as App).getCartAS().clearCart()
         dismiss()
     }
 }

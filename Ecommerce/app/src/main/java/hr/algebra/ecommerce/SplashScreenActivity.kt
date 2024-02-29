@@ -2,13 +2,10 @@ package hr.algebra.ecommerce
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
 import hr.algebra.ecomerce2.framework.applyAnimation
 import hr.algebra.ecomerce2.framework.callDelayed
 import hr.algebra.ecomerce2.framework.isOnline
-import hr.algebra.ecommerce.api.EcommerceWorker
+import hr.algebra.ecomerce2.framework.sendBroadcast
 import hr.algebra.ecommerce.databinding.ActivitySplashScreenBinding
 
 private const val DELAY = 3000L
@@ -33,14 +30,19 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun redirect() {
         if (isOnline()) {
-
+            //AuthManagerRepository.INSTANCE.getAuthManager().logOut()
+            /*
             WorkManager.getInstance(this).apply {
+
                 enqueueUniqueWork(
                     DATA_IMPORTED,
                     ExistingWorkPolicy.KEEP,
                     OneTimeWorkRequest.from(EcommerceWorker::class.java)
                 )
             }
+             */
+            sendBroadcast<EcommerceReceiver>()
+
         } else {
             binding.loadingSplashScreen.text = getString(R.string.no_internet)
             callDelayed(DELAY) {

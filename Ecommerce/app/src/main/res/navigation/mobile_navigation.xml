@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_profile_to_acquisitions"
             app:destination="@id/navigation_acquisitions" />
+        <action
+            android:id="@+id/action_profile_to_details"
+            app:destination="@id/navigation_profile_details" />
 
     </fragment>
 
@@ -55,4 +58,20 @@
             app:destination="@id/navigation_profile" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile_details"
+        android:label="Profile Details"
+        android:name="hr.algebra.ecommerce.ui.fragments.ProfileDetailsFragment"
+        tools:layout="@layout/fragment_profile_details">
+
+        <action
+            android:id="@+id/details_to_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/details_to_shop"
+            app:destination="@id/navigation_shop" />
+    </fragment>
+
+
 </navigation>

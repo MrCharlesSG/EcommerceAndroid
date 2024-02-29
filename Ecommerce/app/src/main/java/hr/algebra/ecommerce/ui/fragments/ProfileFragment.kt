@@ -37,5 +37,13 @@ class ProfileFragment : Fragment() {
         binding.llAcquisitions.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_acquisitions)
         }
+
+        binding.llProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_to_details)
+        }
+
+        binding.ivImage.setOnClickListener{
+            findNavController().navigate(R.id.action_profile_to_details)
+        }
     }
 }

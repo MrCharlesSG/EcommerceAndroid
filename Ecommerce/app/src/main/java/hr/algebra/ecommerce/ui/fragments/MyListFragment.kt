@@ -52,7 +52,7 @@ class MyListFragment : Fragment(), Observer {
         if(CategoryEcommerce.categorySelected.id != CategoryEcommerce.defaultCategory.id){
             val list = mutableListOf<ProductEcommerce>()
             products.forEach {
-                if(it.category?.id== CategoryEcommerce.categorySelected.id){
+                if(it.category?.id == CategoryEcommerce.categorySelected.id){
                     list.add(it)
                 }
             }

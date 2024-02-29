@@ -15,7 +15,9 @@
     <dimen name="_2dp">2dp</dimen>
     <dimen name="_15sp">15sp</dimen>
     <dimen name="_10dp">10dp</dimen>
-    <dimen name="circle_shape_radius">25dp</dimen>
+    <dimen name="circle_shape_radius">10dp</dimen>
     <dimen name="image_product_cart">100dp</dimen>
     <dimen name="_20sp">20sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="image_dialog">200dp</dimen>
 </resources>
