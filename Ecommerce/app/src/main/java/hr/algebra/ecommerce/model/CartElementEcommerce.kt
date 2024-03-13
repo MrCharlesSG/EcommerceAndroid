@@ -3,9 +3,9 @@ package hr.algebra.ecommerce.model
 import hr.algebra.ecommerce.dal.purchase.ProductPurchasedEntity
 
 data class CartElementEcommerce(
-    val _id: Int,
-    var quantity: Int,
-    val product: ProductEcommerce
+    val _id: Int = 0,
+    var quantity: Int = 0,
+    val product: ProductEcommerce = ProductEcommerce()
 ) {
     companion object {
         fun getFromPurchaseEntity(productPurchasedEntity: ProductPurchasedEntity) =

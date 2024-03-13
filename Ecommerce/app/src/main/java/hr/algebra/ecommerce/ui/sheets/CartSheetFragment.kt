@@ -61,7 +61,7 @@ class CartSheetFragment () : BottomSheetDialogFragment(), Observer {
     private fun buyCart() {
         GlobalScope.launch (Dispatchers.IO) {
             if((context?.applicationContext as App).getPurchaseAS().buy()) {
-                clearCart()
+                dismiss()
             }
         }
 

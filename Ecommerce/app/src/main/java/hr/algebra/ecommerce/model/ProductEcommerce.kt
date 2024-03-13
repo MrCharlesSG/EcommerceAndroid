@@ -6,12 +6,12 @@ import hr.algebra.ecommerce.dal.purchase.ProductPurchasedEntity
 
 data class ProductEcommerce (
 
-	@SerializedName("id") val id : Int,
-	@SerializedName("title") val title : String,
-	@SerializedName("price") val price : Int,
-	@SerializedName("description") val description : String,
-	@SerializedName("images") val images : List<String>,
-	@SerializedName("category") val category : CategoryEcommerce?=null,
+	@SerializedName("id") val id : Int = 0,
+	@SerializedName("title") val title : String = "",
+	@SerializedName("price") val price : Int = 0,
+	@SerializedName("description") val description : String = "",
+	@SerializedName("images") var images : List<String> = listOf(),
+	@SerializedName("category") val category : CategoryEcommerce ?= null,
 	private var inMyList : Boolean ?= false
 ) {
 

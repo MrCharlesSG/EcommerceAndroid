@@ -2,6 +2,7 @@ package hr.algebra.ecommerce.handler
 
 import android.content.Context
 import android.util.Log
+import com.google.firebase.storage.StorageReference
 import hr.algebra.ecommerce.factory.createGetHttpUrlConnection
 import java.io.File
 import java.net.HttpURLConnection
@@ -25,9 +26,20 @@ fun downloadAndStore(context: Context, url: String) : String? {
             Log.e("IMAGES_HANDLER", e.toString(), e)
         }
     }
-
-
     return null
+}
+
+fun downloadAndStoreFromFirebase(context: Context, imageRef: StorageReference, onComplete: (String?) -> Unit) {
+    val imageName = imageRef.name
+    val localFile = File(context.getExternalFilesDir(null), imageName)
+
+    imageRef.getFile(localFile)
+        .addOnSuccessListener {
+            onComplete(localFile.absolutePath)
+        }
+        .addOnFailureListener {
+            onComplete(null)
+        }
 }
 
 fun getUrl(url: String): String? {

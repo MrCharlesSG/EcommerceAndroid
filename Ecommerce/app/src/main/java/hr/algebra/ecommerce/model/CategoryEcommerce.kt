@@ -5,9 +5,9 @@ import hr.algebra.ecommerce.dal.category.CategoryEntity
 
 data class CategoryEcommerce (
 
-	@SerializedName("id") val id : Int,
-	@SerializedName("name") val name : String,
-	@SerializedName("image") val image : String
+	@SerializedName("id") val id : Int = 0,
+	@SerializedName("name") val name : String = "",
+	@SerializedName("image") val image : String = ""
 ){
     fun isSelected() : Boolean = categorySelected.id == this.id
 

@@ -21,7 +21,6 @@ import hr.algebra.ecommerce.utils.getMoneyFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -35,14 +34,12 @@ class TotalExpendedFragment : Fragment() {
 
     private fun loadPurchases() {
         GlobalScope.launch (Dispatchers.Main) {
-            //MAIN THREAD
-            purchases = withContext( Dispatchers.IO){
-                val pair = (context?.applicationContext as App).getPurchaseAS().getAllPurchasesAndTotal()
-                totalExpended= pair.first
-                pair.second
+            (context?.applicationContext as App).getPurchaseAS().getAllPurchasesAndTotal{
+                totalExpended= it.first
+                purchases = it.second
+                setupChart()
+                setupTotalPrice()
             }
-            setupChart()
-            setupTotalPrice()
         }
     }
 

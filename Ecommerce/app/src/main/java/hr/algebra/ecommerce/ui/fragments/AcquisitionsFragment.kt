@@ -9,11 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import hr.algebra.ecommerce.App
 import hr.algebra.ecommerce.adapter.PurchaseAdapter
 import hr.algebra.ecommerce.databinding.FragmentAcquistionsBinding
-import hr.algebra.ecommerce.model.Purchase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class AcquisitionsFragment : Fragment() {
@@ -27,17 +25,14 @@ class AcquisitionsFragment : Fragment() {
     }
 
     private fun loadPurchases() {
-        GlobalScope.launch (Dispatchers.Main) {
-            //MAIN THREAD
-            val purchases : List<Purchase> = withContext( Dispatchers.IO){
-                (context?.applicationContext as App).getPurchaseAS().getAllPurchases()
+        GlobalScope.launch (Dispatchers.IO) {
+            (context?.applicationContext as App).getPurchaseAS().getAllPurchases{ purchases ->
+                binding.rvPurchases.apply{
+                    layoutManager = LinearLayoutManager(requireContext())
+                    adapter = PurchaseAdapter(requireContext(), purchases)
+                }
             }
 
-            //MAin Thread
-            binding.rvPurchases.apply{
-                layoutManager = LinearLayoutManager(requireContext())
-                adapter = PurchaseAdapter(requireContext(), purchases)
-            }
         }
     }
 
