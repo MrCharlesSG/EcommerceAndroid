@@ -1,86 +1,123 @@
 package hr.algebra.ecommerce.services
 
 import android.content.Context
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import hr.algebra.ecommerce.App
+import hr.algebra.ecommerce.auth.AuthManagerRepository
 import hr.algebra.ecommerce.dal.AppDatabase
 import hr.algebra.ecommerce.dal.mylist.MyListDao
-import hr.algebra.ecommerce.dal.mylist.MyListEntity
 import hr.algebra.ecommerce.model.ProductEcommerce
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
+private const val MY_LIST_REFERENCE = "myList"
 
 class MyListAS(context: Context) : ApplicationAuthenticatedService(context) {
 
     private val myListDao: MyListDao = AppDatabase.getInstance(context)
         .myListDao()
-    private val saProduct : ProductAS = (context.applicationContext as App).getProductAS()
+    private val saProduct: ProductAS = (context.applicationContext as App).getProductAS()
 
     private val databaseReference: DatabaseReference by lazy {
         FirebaseDatabase.getInstance().reference
     }
+
+    private val ref: DatabaseReference by lazy {
+        AuthManagerRepository.INSTANCE.getAuthManager().getDataBaseReference()
+    }
+    private val user by lazy {
+        AuthManagerRepository.INSTANCE.getAuthManager().getUserLogged()?.uid
+    }
+
+
     suspend fun insert(product: ProductEcommerce, updateInterface: () -> Unit) {
-        authenticateFunction{
-            /*myListDao.insert(
-                MyListEntity(
-                    product.id
-                )
-            )
-             */
-            /*val currentUser = AuthManagerRepository.INSTANCE.getAuthManager().getUserLogged()
-            currentUser?.uid?.let { userId ->
-                /*val userMyListReference =
-                    databaseReference.child("users").child(userId).child("myList")
-                userMyListReference.setValue(MyListEntity(
-                    product.id
-                )).addOnSuccessListener {
-                    Log.e("EN firebase", "Success")
-                }.addOnFailureListener {
-                    Log.e("EN firebase", "Failure")
-                }.addOnCanceledListener {
-                    Log.e("EN firebase", "Cancel")
-                }.addOnCompleteListener {
-                    Log.e("EN firebase", "Complete")
-                }
-                 */
-                val myList = product.id
-                databaseReference.child("users").child(userId).setValue(myList)
+        authenticateFunction {
+            user?.let { uid ->
+                val productListRef = ref.child(uid).child(MY_LIST_REFERENCE)
+                productListRef.child(product.id.toString()).setValue(product.id)
+                //val productRef = productListRef.child(product.id.toString())
+                //productRef.setValue(product)
             }
-             */
             updateInterface()
         }
     }
 
     suspend fun delete(product: ProductEcommerce, updateInterface: () -> Unit) {
-        authenticateFunction{
-            myListDao.delete(
-                MyListEntity(
-                    product.id
-                )
-            )
+        authenticateFunction {
+            user?.let { uid ->
+                /* val productListRef = ref.child(uid).child(MY_LIST_REFERENCE)
+                 val productRef = productListRef.child(product.id.toString())
+                 productRef.removeValue()
+                 */
+                val productListRef = ref.child(uid).child(MY_LIST_REFERENCE)
+                productListRef.child(product.id.toString()).removeValue()
+                //val elementoAEliminar = productListRef.child()
+                //elementoAEliminar.removeValue()
+            }
             updateInterface()
         }
     }
 
-    fun getMyList(): MutableList<ProductEcommerce> {
-        val myListProducts = myListDao.getAll()
-        val productEcommerceList = mutableListOf<ProductEcommerce>()
+    suspend fun getMyList(): MutableList<ProductEcommerce> {
+        val productList = mutableListOf<ProductEcommerce>()
+        val deferred = CompletableDeferred<Unit>()
 
-        myListProducts.forEach{myListProduct ->
-            val product = saProduct.getProduct(myListProduct._id)
-            if(product!=null){
-                product.setInMyList(true)
-                productEcommerceList.add(product)
+        authenticateFunction {
+            user?.let { uid ->
+                val productListRef = ref.child(uid).child(MY_LIST_REFERENCE)
+
+                productListRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            snapshot.children.forEach { element ->
+                                val productId = element.getValue(Int::class.java)
+                                if (productId != null) {
+                                    val product = saProduct.getProduct(productId)
+                                    if (product != null) productList.add(product)
+                                }
+                            }
+                            deferred.complete(Unit)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e("Canceled", error.toString())
+                        deferred.completeExceptionally(error.toException())
+                    }
+                })
             }
-            /*val currentUser = AuthManagerRepository.INSTANCE.getAuthManager().getUserLogged()
-            currentUser?.uid?.let { userId ->
-                val myListReference = databaseReference.child("usuarios").child(userId).child("myList")
-                myListReference.addValueEventListener(listener)
-            }*/
         }
 
-        return productEcommerceList
+        deferred.await()
+        return productList
+    }
+    fun isProductInMyList(id: Int, callback: (Boolean) -> Unit) {
+        var isInMyList: Boolean
+        if (isAuthenticated()) {
+            user?.let { uid ->
+                val productListRef = ref.child(uid).child(MY_LIST_REFERENCE)
+                productListRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        isInMyList = snapshot.hasChild(id.toString())
+                        callback(isInMyList)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        callback(false)
+                    }
+                })
+            }
+        } else {
+            callback(false)
+        }
     }
 
-    fun isProductInMyList(id: Int) : Boolean = myListDao.get(id)!=null
 
 }

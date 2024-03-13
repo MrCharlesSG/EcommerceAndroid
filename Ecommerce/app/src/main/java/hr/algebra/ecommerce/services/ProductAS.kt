@@ -22,10 +22,9 @@ class ProductAS(private val context: Context) {
         val productEcommerceList = mutableListOf<ProductEcommerce>()
         productEntities.forEach { productEntity ->
             val productEcommerce = ProductEcommerce.getFromEntity(productEntity)
-
-            productEcommerce.setInMyList(
-                (context.applicationContext as App).getMyListAS().isProductInMyList(productEcommerce.id)
-            )
+            (context.applicationContext as App).getMyListAS().isProductInMyList(productEcommerce.id){
+                productEcommerce.setInMyList(it)
+            }
             productEcommerceList.add(productEcommerce)
         }
         return productEcommerceList

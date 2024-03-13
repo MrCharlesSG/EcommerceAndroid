@@ -10,23 +10,31 @@ import java.nio.file.Paths
 
 fun downloadAndStore(context: Context, url: String) : String? {
 
+    val realUrl = getUrl(url)
+    if(realUrl!=null) {
+        val file = createFile(context, generateFileName(realUrl))
 
-    val filename = url.substring(url.lastIndexOf(File.separatorChar) + 1)
-    val file = createFile(context, filename)
+        try {
+            val con: HttpURLConnection = createGetHttpUrlConnection(realUrl)
 
-    try {
-        val con: HttpURLConnection = createGetHttpUrlConnection(url)
+            Files.copy(con.inputStream, Paths.get(file.toURI()))
 
-        Files.copy(con.inputStream, Paths.get(file.toURI()))
+            return file.absolutePath
 
-        return file.absolutePath
-
-    } catch (e: Exception) {
-        Log.e("IMAGES_HANDLER", e.toString(), e)
+        } catch (e: Exception) {
+            Log.e("IMAGES_HANDLER", e.toString(), e)
+        }
     }
 
 
     return null
+}
+
+fun getUrl(url: String): String? {
+    val regex = Regex("""https?://[^\s"]+""")
+    val matchResult = regex.find(url)
+
+    return matchResult?.value
 }
 
 fun createFile(context: Context, filename: String): File {
@@ -34,6 +42,12 @@ fun createFile(context: Context, filename: String): File {
     val file = File(dir, filename)
     if(file.exists()) file.delete()
     return file
+}
+
+fun generateFileName(url: String): String {
+    val hash = url.hashCode()
+    val timeStamp = System.currentTimeMillis()
+    return "${hash}_${timeStamp}"
 }
 
 

@@ -87,7 +87,6 @@ class MyListFragment : Fragment(), Observer {
 
     private suspend fun loadProducts() {
         val products: List<ProductEcommerce> = withContext(Dispatchers.IO) {
-            //Background thread
             (context?.applicationContext as App).getMyListAS().getMyList()
         }
         this.products = products

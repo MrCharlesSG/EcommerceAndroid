@@ -1,6 +1,7 @@
 package hr.algebra.ecommerce.auth
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 internal class FirebaseAuthManager : AuthManager {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -10,6 +11,10 @@ internal class FirebaseAuthManager : AuthManager {
     override fun logOut() {
         auth.signOut()
     }
+
+    override fun getDataBaseReference(reference: String) =
+        FirebaseDatabase.getInstance("https://ecommerce-algebra-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Users")
+
 
     override fun registerUserWithEmailAndPassword(email: String, password: String, onSuccess: () -> Unit, onFailure: (String) -> Unit) {
         if(!areValidValues(email, password, onFailure)) return

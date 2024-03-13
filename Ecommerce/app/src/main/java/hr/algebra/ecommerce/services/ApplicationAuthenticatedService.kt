@@ -15,4 +15,6 @@ open class ApplicationAuthenticatedService(context: Context) {
             false
         }
 
+    protected fun isAuthenticated() = AuthManagerRepository.INSTANCE.getAuthManager().isUserLogged()
+
 }
