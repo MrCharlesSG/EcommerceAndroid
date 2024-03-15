@@ -149,7 +149,7 @@ interface AuthManager {
 
 When ever a user try to access to a service that needs authentication a dialog is shown
 
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/308caa30-a112-48d4-9779-f531a93ae2cb" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/308caa30-a112-48d4-9779-f531a93ae2cb" width="225" height="500" />
 
 
 The login and sign in window looks like this:
