@@ -134,7 +134,7 @@ For showing the correct list of products, both `MyListFragment` and `ShopFragmen
 <!-- TOC --><a name="introduction"></a>
 ## Introduction
 
-It is motivated by the need to use an "advanced" project for a subject called Advanced Programming Paradigms. In this subject it will be explore testing  among many other things. For that we have to use a project where there is a business layer. In the subject there will be also cover the refactoring and good principles for coding, that is why in this V2 is not all finished.
+It is motivated by the need to use an "advanced" project for a subject called Advanced Programming Paradigms. In this subject it will be explore testing  among many other things. For that we have to use a project where there is a business layer. In the subject there will be also cover the refactoring and good principles for coding, that is why in this V2 is not finished at all.
 
 The pillar on which this version is based is the Authorization of the user. With so, there will be some differences (in functionality terms) between the anonymous and the authenticated user. 
 
