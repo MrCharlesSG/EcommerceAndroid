@@ -1,6 +1,38 @@
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [EcommerceAndroid](#ecommerceandroid)
+- [V1 (frontend)](#v1-frontend)
+   * [Description](#description)
+   * [User Stories](#user-stories)
+   * [UI](#ui)
+      + [Splash Screen](#splash-screen)
+      + [Shop](#shop)
+      + [MyList](#mylist)
+      + [Profile](#profile)
+      + [Cart](#cart)
+   * [Classes Description](#classes-description)
+      + [Consuming API](#consuming-api)
+      + [Storing Data](#storing-data)
+      + [Other](#other)
+         - [Observer Pattern](#observer-pattern)
+         - [Controller](#controller)
+         - [Categroy](#categroy)
+         - [List](#list)
+- [V2 (Authorization)](#v2-authorization)
+   * [Introduction](#introduction)
+   * [How was done (technically)?](#how-was-done-technically)
+      + [Firebase](#firebase)
+      + [Login](#login)
+      + [Storage](#storage)
+      + [Real Time Database](#real-time-database)
+   * [Future Work](#future-work)
+
+<!-- TOC end -->
+
 <!-- TOC --><a name="ecommerceandroid"></a>
 # EcommerceAndroid
 
+<!-- TOC --><a name="v1-frontend"></a>
 # V1 (frontend)
 
 <!-- TOC --><a name="description"></a>
@@ -96,8 +128,10 @@ For displaying category I have a horizontal `RecicledView` that uses the `Catego
 
 For showing the correct list of products, both `MyListFragment` and `ShopFragment` works the same. They use the products list that store all the product and the products to show that is always updated in the method `updateView` of the `Observer` interface.
 
+<!-- TOC --><a name="v2-authorization"></a>
 # V2 (Authorization)
 
+<!-- TOC --><a name="introduction"></a>
 ## Introduction
 
 It is motivated by the need to use an "advanced" project for a subject called Advanced Programming Paradigms. In this subject it will be explore testing  among many other things. For that we have to use a project where there is a business layer. In the subject there will be also cover the refactoring and good principles for coding, that is why in this V2 is not all finished.
@@ -106,10 +140,12 @@ The pillar on which this version is based is the Authorization of the user. With
 
 Basically, now, the anonymous user can only see the list of all products, see its details and add them to the cart, but is unable to add to *my list* products, access to the *profile* and *my list* section and buy and manage the cart.
 
+<!-- TOC --><a name="how-was-done-technically"></a>
 ## How was done (technically)?
 
 Basically now the controller and all the layers that used to use the `daos`, now use a brand new `service layer`, with so, there is a new **`Service Application Class`** for each of the functionalities that used the `daos` as could be the classes `CartSA`,`PurchasesSA`, or `MyListSA`. This `service layer` now is the only one that access to the `Data Access Layer` that also contains all the way the authentication and store of info in cloud is done.
 
+<!-- TOC --><a name="firebase"></a>
 ### Firebase
 
 Firebase authentication, real time database and storage is used in the application for what each one is required: 
@@ -118,6 +154,7 @@ Firebase authentication, real time database and storage is used in the applicati
 - Storage for storaging the images of the purchased products.
 - Real Time Database is used for storing every thing can be store in a json
 
+<!-- TOC --><a name="login"></a>
 ### Login
 
 For login, firebase serve a very easy way for manging it. I have created a singleton class `AuthManagerRepository` and a `AuthManager` interface, so the Dependency Inversion principle of SOLID principles is maintainig.
@@ -159,13 +196,15 @@ The login and sign in window looks like this:
 
 Now in the profile section the user is able to logout
 
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/e6d9c74e-22a4-4f9d-879d-395c3d5f827f" width="225" height="500" />
 <img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/3c79e19e-478b-449e-8f9e-11c9b8e97203" width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/e6d9c74e-22a4-4f9d-879d-395c3d5f827f" width="225" height="500" />
 
+<!-- TOC --><a name="storage"></a>
 ### Storage
 
 The images of all the product purchases are downloaded in the Firebase Storage service.
 
+<!-- TOC --><a name="real-time-database"></a>
 ### Real Time Database
 
 The reason why is used the Real Time Database is becouse the other option (Firebase Cloud Storage) was much powerfull and I obiously don’t need (for this project) that much resources.
@@ -214,6 +253,7 @@ The information is saved in a JSON like this:
 
 Basically the `myList` only stores the ids of each product and the `purchases` store the total price of the purchase, the date (as the ID is still the date but converted in long) and all the products with its quantities. As the image is stored in firebase, the images string of the products are just the name of the image in Firebase Storage.
 
+<!-- TOC --><a name="future-work"></a>
 ## Future Work
 
 In future it will be done the test for the hole project, a refactoring of the code and some other features. All of this will be part of the subject Advanced Programming Paradigms
