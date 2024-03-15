@@ -154,13 +154,13 @@ When ever a user try to access to a service that needs authentication a dialog i
 
 The login and sign in window looks like this:
 
-![Screenshot_1710496780](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/69e9425f-39a2-4582-bbec-708c9c39dd7b)
-![Screenshot_1710496775](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/22e2afc4-43f9-443e-aa97-ddb8812a5bd8)
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/69e9425f-39a2-4582-bbec-708c9c39dd7b" width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/22e2afc4-43f9-443e-aa97-ddb8812a5bd8" width="225" height="500" />
 
 Now in the profile section the user is able to logout
 
-![Screenshot_1710496697](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/e6d9c74e-22a4-4f9d-879d-395c3d5f827f)
-![Screenshot_1710496465](https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/3c79e19e-478b-449e-8f9e-11c9b8e97203)
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/e6d9c74e-22a4-4f9d-879d-395c3d5f827f" width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/3c79e19e-478b-449e-8f9e-11c9b8e97203" width="225" height="500" />
 
 ### Storage
 
