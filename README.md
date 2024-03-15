@@ -27,32 +27,32 @@ The application has three main sections and the cart and the Splash Screen. It s
 <!-- TOC --><a name="splash-screen"></a>
 ### Splash Screen
 
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/2e1f459b-dede-44b6-b307-1f88f3068f62" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/2e1f459b-dede-44b6-b307-1f88f3068f62"  width="225" height="500" />
 
 <!-- TOC --><a name="shop"></a>
 ### Shop
 
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/1ae9e2a5-9af5-40ca-b997-696d0229bbbf" width="200" height="400" />
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/f9f2dd24-0740-422d-a61b-a485d4446019" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/1ae9e2a5-9af5-40ca-b997-696d0229bbbf"  width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/f9f2dd24-0740-422d-a61b-a485d4446019"  width="225" height="500" />
 
 <!-- TOC --><a name="mylist"></a>
 ### MyList
 
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/756a2afa-5036-4a4a-8bd3-f55df21c2545" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/756a2afa-5036-4a4a-8bd3-f55df21c2545"  width="225" height="500" />
 
 
 <!-- TOC --><a name="profile"></a>
 ### Profile
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/7e93aa22-311e-456f-8b50-ddeea54abd0a" width="200" height="400" />
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/79ceffe1-5399-4129-9f30-4a03ee1a9a25" width="200" height="400" />
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/c0dbee2f-b88f-439c-9ca3-8042b8af8444" width="200" height="400" />
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/18098150-6069-4190-a372-a5319e106880" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/7e93aa22-311e-456f-8b50-ddeea54abd0a"  width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/79ceffe1-5399-4129-9f30-4a03ee1a9a25"  width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/c0dbee2f-b88f-439c-9ca3-8042b8af8444"  width="225" height="500" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/18098150-6069-4190-a372-a5319e106880"  width="225" height="500" />
 
 
 <!-- TOC --><a name="cart"></a>
 ### Cart
 
-<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/56af573c-eb70-4759-a30e-9890aa46564a" width="200" height="400" />
+<img src="https://github.com/MrCharlesSG/EcommerceAndroid/assets/94635721/56af573c-eb70-4759-a30e-9890aa46564a"  width="225" height="500" />
 
 
 <!-- TOC --><a name="classes-description"></a>
